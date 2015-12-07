@@ -1,0 +1,220 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 25, 2015, 2:41:16 PM
+    Author     : Mits
+*/
+
+*{
+margin:0px;
+padding:0px;
+font-size:12px;
+background-color:#eff5f9;
+
+}
+.headerMenu{
+
+background-image:url("../img/menu-bg.png");
+height:56px;
+border-bottom:0px;
+padding-left:auto;
+padding-right:auto;
+width:100%;
+
+}
+#wrapper{
+background-image:url("../img/menu-bg.png");
+margin-left:auto;
+margin-right:auto;
+width:800px;
+height: auto;
+border-left:1px solid #dce5ee;
+border-right:1px solid #dce5ee;
+padding-left:10px;
+padding-right:10px;
+overflow:auto;
+}
+.logo{
+background-image:url("../img/menu-bg.png");
+width:125px;
+}
+.logo img {
+background-image:url("../img/menu-bg.png");
+width:150px;
+height:38px;
+padding-top:5px;
+
+}
+.search_box{
+background-image:url(../img.menu_bg.png);
+position:absolute;
+top:13px;
+margin-left:135px;
+}
+#search input[type="text"]{
+background-image:url(../img/search-white.png) no-repeat 10px 6px #267bb6;
+outline:none;
+border:0 none;
+font:bold 12px Arial,Sans-serif;
+width:350px;
+margin:0px;
+padding:6px 15px 6px 35px;
+text-shadow:0 2px 2px rgba(0,0,0,0.3);
+-webkit-box-shadow:0 1px 0 rgba(255,255,255,0.1) , 0 1px 3px rgba(0,0,0,0.2) inset; 
+-moz-box-shadow:0 1px 0 rgba(255,255,255,0.1) , 0 1px 3px rgba(0,0,0,0.2) inset; 
+box-shadow:0 1px 0 rgba(255,255,255,0.1) , 0 1px 3px rgba(0,0,0,0.2) inset;
+-webkit-transition:all 0.7s ease 0s; 
+-moz-transition:all 0.7s ease 0s; 
+-o-transition:all 0.7s ease 0s; 
+transition:all 0.7s ease 0s; 
+}
+
+#search input[type="text"]:focus{
+
+
+background-image:url(../img/search_dark.png) no-repeat 10px 6px #fcfcfc;
+color:#6a6f75;
+width:350px;
+text-shadow:0 2px 3px rgba(0,0,0,0.1);
+-webkit-box-shadow:0 1px 0 rgba(255,255,255,0.1) , 0 1px 0 rgba(0,0,0,0.9) inset; 
+-moz-box-shadow:0 1px 0 rgba(255,255,255,0.1) , 0 1px 0 rgba(0,0,0,0.9) inset; 
+box-shadow:0 1px 0 rgba(255,255,255,0.1) , 0 1px 0 rgba(0,0,0,0.9) inset;
+}
+#menu a{
+
+color:#ffffff;
+text-decoration:none;
+font-size:14px;
+background-image:url("../img/menu-bg.png");
+background-repeat:no-repeat;
+padding-top:19px;
+padding-bottom:22px;
+padding-left:10px;
+padding-right:10px;
+
+}
+@media screen and (min-width: 1280px){
+#menu{
+background-image:url("../img/menu-bg.png");
+position:absolute;
+top:0px;
+right:0px;
+height:37px;
+padding-top:19px;
+margin-right:10%;
+}
+
+}
+@media screen and (min-width: 1920px){
+#menu{
+background-image:url("../img/menu-bg.png");
+position:absolute;
+top:0px;
+right:0px;
+height:37px;
+padding-top:19px;
+margin-right:25%;
+
+}
+
+}
+h2{
+
+font-family:Arial,Helvetica,Sans-serif;
+font-size:18px;
+padding:8px;
+color:#0084c6;
+
+}
+input[type="text"]{
+background-color:#ffffff;
+border:1px solid #e2e2e2;
+
+font-size:15px;
+padding:5px;
+width:300px;
+margin-bottom:3px;
+margin-top:3px;
+outline:none;
+
+}
+input[type="text"]:hover{
+
+border:1px solid #006fc4;
+
+}
+input[type="submit"]{
+
+background-color:#006fc4;
+border:1px solid #00508d;
+font-size:15px;
+color:#ffffff;
+padding:5px;
+margin-bottom:3px;
+margin-top:3px;
+border-radius:7px;
+
+}
+
+.profilePost{
+ float:right;
+ width:560px;
+ height:414px;
+ background-color:#dce5ee;
+ padding:5px;
+}
+.postForm{
+   float:right;
+   width:560px;
+   height:80px;
+   background-color:#f3f6f9;
+   padding:5px;
+}
+.profileLeftSideContent{
+    width:194px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    padding-top:5px;
+    padding-left: 0px;
+    height: 200px;
+    
+}
+.textHeader{
+     background-color:#f3f6f9;
+     width: 190px;
+     height: 15px;
+     padding: 5px;
+     border-bottom: 1px solid #dce5ee;
+     font-weight: 600;
+    
+    
+}
+ hr{
+    
+    
+    background-color: #dce5ee;
+    height: 1px;
+    border: 0px;
+}
+.posted_by{
+   font-weight: 800;
+   color: #000;
+   text-decoration: none;
+    
+    
+}
+.posted_by a{
+    font-weight: 800;
+   color: #000;
+   text-decoration: none;
+    
+}
+.posted_by a:hover{
+    font-weight: 800;
+   color: #000;
+   text-decoration: none;
+    
+}
