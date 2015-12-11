@@ -24,14 +24,15 @@
             <img src="./img/findjob.jpg"/>
      </div>
 	 <div class="search_box">
-	 <form action="search.php" method="GET" id="search">
-	 <input type="text" name="q" size="60" placeholder="Search"
-	 </form>
+	 <form action="search.jsp" method="POST" id="search">
+	 <input type="text" name="find" size="60" placeholder="Search"/>
+         <input type="submit" name="findFriend" />
 	 
 	 </div>
 	 <div id="menu">
 	 <a href=""><%=usernamelog %></a>
 	  <a href="">Account Settings</a>
+           <a href="">My Messages</a>
 	   <a href="">LogOut</a>
 	 </div>
 </div>
