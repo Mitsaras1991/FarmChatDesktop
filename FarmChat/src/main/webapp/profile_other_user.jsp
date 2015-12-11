@@ -71,9 +71,12 @@ while(user_info.next()){
 
 </div>
  
+ <form action="send_msg.jsp?msg_to=<%=user_view%>" method="POST">
+    
+        <input type="submit" name="sendmsg" value="Send Message"/>
+</form>
  
- 
- <div class="textHeader"><%=usernamelog%>'s Friends</div>
+ <div class="textHeader"><%=user_view%>'s Friends</div>
 <div class="profileLeftSideContent">
     <img  src='#' height="50" width='40'/>&nbsp;&nbsp;  
     <img  src='#' height="50" width='40'/>&nbsp;&nbsp;

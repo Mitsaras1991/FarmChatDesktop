@@ -75,13 +75,7 @@ while(user_info.next()){
 
 
 </div>
-<form action="<%=usernamelog%>" method="POST">
-    
-    <input type="submit" name="addfriend" value="Add as Friend"/>
-        <input type="submit" name="sendmsg" value="Send Message"/>
 
-    
-</form>
 <div class="textHeader"><%=usernamelog%>'s Friends</div>
 <div class="profileLeftSideContent">
     <img  src='#' height="50" width='40'/>&nbsp;&nbsp;  
