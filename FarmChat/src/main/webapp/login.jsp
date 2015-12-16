@@ -21,9 +21,9 @@
    if(userLogin!=null && passwordLogin!=null){
   userLogin=userLogin.replaceAll("#[^A-Za-z0-9]#i",userLogin);
   passwordLogin=passwordLogin.replaceAll("#[^A-Za-z0-9]#i", passwordLogin);
-  int action=conn.createStatement().executeUpdate(sql_login);
+  ResultSet rs_login=conn.createStatement().executeQuery(sql_login);
     conn.setAutoCommit(true);
-     if(action==1){
+     if(rs_login.getRow()==1){
      
      %>
          

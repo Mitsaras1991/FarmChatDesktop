@@ -4,7 +4,7 @@
     Author     : Mits
 --%>
 
-asdsad
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="includes/initheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>

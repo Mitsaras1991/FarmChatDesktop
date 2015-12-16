@@ -30,12 +30,11 @@
 	 
 	 </div>
 	 <div id="menu">
-	 <a href=""><%=usernamelog %></a>
-	  <a href="">Account Settings</a>
-           <a href="">My Messages</a>
-	   <a href="">LogOut</a>
+	 <a href="profile.jsp"><%=usernamelog %></a>
+	  <a href="account_settings.jsp">Account Settings</a>
+           <a href="my_messages.jsp">My Messages</a>
+	   <a href=logout.jsp">LogOut</a>
 	 </div>
 </div>
 <div id='wrapper'></div><br/><br/><br/><br/><br/>
-    </body>
-</html>
+

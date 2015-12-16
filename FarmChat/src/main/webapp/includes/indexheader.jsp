@@ -20,7 +20,7 @@
             <img src="./img/findjob.jpg"/>
      </div>
 	 <div class="search_box">
-	 <form action="search.php" method="GET" id="search">
+	 <form action="error.jsp" method="POST" id="search">
 	 <input type="text" name="q" size="60" placeholder="Search"/>
          
 	 </form>

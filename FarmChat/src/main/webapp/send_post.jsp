@@ -18,7 +18,7 @@
  String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
  ResultSet rs=null;
  java.sql.Date date_added=rs.getDate(1);
- String user_posting_to=(String)request.getAttribute("name");
+ String user_posting_to=(String)request.getParameter("name");
  
  %>
  <% 
