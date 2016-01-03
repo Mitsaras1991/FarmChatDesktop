@@ -11,12 +11,12 @@
     String username_log=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
     if(username_log!=null || username_log!=""){%>
  
+    <%--<%@include file="includes/profileheader.jsp" %>--%>
     <jsp:include page="profileheader.jsp"/>
-    
     <%}
     else{%>
  
+    <%--<%@include file="includes/indexheader.jsp"%>--%>
     <jsp:include page="indexheader.jsp"/>
-    
     <%}
     %>

@@ -10,7 +10,7 @@
 <%@include file="includes/dbconnection.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@include  file="includes/header.jsp"%>
+<%@include  file="includes/initheader.jsp"%>
         <%
 String firstname=request.getParameter("fname");
 pageContext.setAttribute("firstname",firstname,PageContext.SESSION_SCOPE);
@@ -30,17 +30,27 @@ pageContext.setAttribute("password",password,PageContext.SESSION_SCOPE);
 String password2=request.getParameter("password2");
 pageContext.setAttribute("password2",password2,PageContext.SESSION_SCOPE);
 
-
-
 String sql="insert into users(username,first_name,last_name,email,password,activated) values('"+username_db+"','"+firstname+"','"+lastname+"','"+email+"','"+password_db+"',0)";
 %>
-<mysql:query dataSource="${snapchat}" var="un_db">
-SELECT username from users;
-</mysql:query>
 
-<mysql:query dataSource="${snapchat}" var="email_db">
-SELECT email from users;
-</mysql:query>
+String users_email=("select email from users");
+String users_un=("select username from users");
+ResultSet rs_un=conn.createStatement().executeQuery(users_un);
+ResultSet rs_email=conn.createStatement().executeQuery(users_email);
+boolean check_email=false;
+boolean check_un=false;
+        
+while(rs_email.next() && check_email = false){
+    String email_db=rs_email.getString(1);
+    if(email_db==email){check_email=true;}
+}
+while(rs_un.next() && check_un=false ){
+    String un_db=rs_email.getString(1);
+    if(un_db==email){
+        check_un=true;
+    }
+}
+
 <%
 if(username.equals("un_db") || email.equals("email_db"))
 {%>
@@ -61,15 +71,12 @@ This username or email already exists
     <%}
  else{%>
     <% 
-   
     try{
    int action=conn.createStatement().executeUpdate(sql);
     conn.setAutoCommit(true);
-     if(action==1){%>
-         
+     if(action==1){%>   
             
      <jsp:forward page="profile.jsp"/>
-     
          
     <%}
      else{%>
@@ -81,11 +88,7 @@ This username or email already exists
     e.printStackTrace();
     }
     
-    %>
-   
-    
+    %> 
     <%}
-
 %>
-    </body>
-</html>
+    

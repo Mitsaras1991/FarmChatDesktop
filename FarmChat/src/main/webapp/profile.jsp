@@ -70,11 +70,9 @@ while(user_info.next()){
 <p><%=user_firstname%></p>
 <p><%=user_lastname%></p>
 <p><%=user_bio%></p>
-
-
-
-
 </div>
+
+<div class="textHeader"><%=usernamelog%>'s Albums</div>
 
 <div class="textHeader"><%=usernamelog%>'s Friends</div>
 <div class="profileLeftSideContent">
