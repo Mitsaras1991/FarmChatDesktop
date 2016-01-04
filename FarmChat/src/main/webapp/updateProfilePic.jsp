@@ -1,7 +1,7 @@
 <%-- 
     Document   : updateProfilePic
     Created on : Dec 6, 2015, 9:54:17 PM
-    Author     : Mits
+    Author     : sothria
 --%>
 
 
@@ -90,7 +90,7 @@ if(request.getParameter("profile_pic")!=null){
 }
 }
 else{%>
-<script type="javascript">alert("Put something to upload")</script>
+<script type="text/javascript">alert("Put something to upload");</script>
 
 <%
 response.sendRedirect("account_settings.jsp");
