@@ -47,7 +47,7 @@ String username_post;
 %>  //do the post form redirect line 40 in loop
   
 
-</div>//do the pictures update
+</div>
 <img src="img/default_pic.jpg" height="250" width="200" alt=<%=usernamelog%>"s Profile" title=<%=usernamelog %>"'s Profile"/><br/>
 <div class="textHeader"><%=usernamelog%>'s Profile</div>
 <div class="profileLeftSideContent">Some Content about this person's profile
@@ -63,16 +63,16 @@ while(user_info.next()){
  user_bio=user_info.getString(3);
 }
 
-
-
 %>
-
+        
 <p><%=user_firstname%></p>
 <p><%=user_lastname%></p>
 <p><%=user_bio%></p>
 </div>
 
-<div class="textHeader"><%=usernamelog%>'s Albums</div>
+<div class="textHeader"><%=usernamelog%>'s Albums
+<input type="submit" name="View Albums" value="View Albums" style="background-color:#006fc4; float: right; border:1px solid #666;"/>
+</div>
 
 <div class="textHeader"><%=usernamelog%>'s Friends</div>
 <div class="profileLeftSideContent">

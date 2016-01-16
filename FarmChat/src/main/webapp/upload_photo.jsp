@@ -1,9 +1,8 @@
 <%-- 
-    Document   : updateProfilePic
-    Created on : 6 Ιαν 2016, 1:57:53 μμ
+    Document   : upload_photo
+    Created on : 15 Ιαν 2016, 9:31:12 μμ
     Author     : sothria
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -15,10 +14,20 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
  <%@include file="includes/connection.jsp" %>
-<%
-String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+ <%
+ String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+%>
+ <h2>Upload Your Photos: </h2>
+ <hr/>
+ 
+ <form action="" method="POST" enctype="multipart/form-data">
+     <input type="file" name="album_photo"/><br/><br/>   
+     <input type="submit" name="upload_pic" value="Upload Image"/>
+ </form>
+ 
+ <%
 
-if(request.getParameter("profile_pic")!=null){
+if(request.getParameter("album_photo")!=null){
    File file=null;
    int maxFileSize = 5000 * 1024;
    int maxMemSize = 5000 * 1024;
@@ -33,7 +42,7 @@ if(request.getParameter("profile_pic")!=null){
       // maximum size that will be stored in memory
       factory.setSizeThreshold(maxMemSize);
       // Location to save data that is larger than maxMemSize.
-      factory.setRepository(new File("c:\\temp"));
+      factory.setRepository(new File("c:\\album"));
 
       // Create a new file upload handler
       ServletFileUpload upload = new ServletFileUpload(factory);
@@ -72,9 +81,9 @@ if(request.getParameter("profile_pic")!=null){
          
              }
             
-       String sql_upload_pic=("UPDATE users SET profile_pic='"+file+"' where username='"+usernamelog+"'");
+       String sql_upload_photo=("UPDATE users SET image_url='"+file+"' where username='"+usernamelog+"'");
             try{
-   int action=conn.createStatement().executeUpdate(sql_upload_pic);
+   int action=conn.createStatement().executeUpdate(sql_upload_photo);
     conn.setAutoCommit(true);
      if(action==1){}
      
@@ -93,6 +102,6 @@ else{%>
 <script type="text/javascript">alert("Put something to upload");</script>
 
 <%
-response.sendRedirect("account_settings.jsp");
+response.sendRedirect("upload_photo.jsp");
 }
 %>

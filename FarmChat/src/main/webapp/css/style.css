@@ -218,3 +218,22 @@ border-radius:7px;
    text-decoration: none;
     
 }
+
+.albums{
+    background-color: #ffffff;
+    border-style: solid;
+    border-color: #f3f6f9;
+    border-width: 1px;
+    padding: 3px;
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.albums:hover{
+    background-color: #f3f6f9;
+    border-style: solid;
+    border-color: #dce5ee;
+    border-width: 1px;
+}
