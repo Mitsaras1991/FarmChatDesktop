@@ -2,7 +2,7 @@
     Document   : connection
     Created on : Nov 25, 2015, 3:18:16 PM
     Author     : Mits
---%>aa
+--%>
 <sql:setDataSource var="snapchat" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost/snapchat"
+     url="jdbc:mysql://localhost:3306/snapchat"
      user="root"  password=""/>

@@ -3,10 +3,10 @@
     Created on : Nov 29, 2015, 9:39:11 PM
     Author     : Mits
 --%>
-aassd
+<!--aassd-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="includes/initheader.jsp" %>
+<%@include file="includes/profileheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
  <%@include file="includes/connection.jsp" %>
@@ -19,27 +19,28 @@ aassd
  
  }
  else{%>
- You must be logged ;
+ <b>You must be logged</b> 
  
  
  <%}
  
  %>
- <form action="updateprofile.jsp" method="post">
+<!-- <form action="updateprofile.jsp" method="post">-->
  <h2>Account Settings</h2>
  <hr/>
  <p>Upload Your Profile Photo</p>
- <form action="updateProfilePic.jsp" method="POST" enctype="multipart/forma-formdata">
+ <form action="updateProfilePic.jsp" method="POST" enctype="multipart/form-data">
      <img src="img/default_pic/jpg" width="70"/>
-     <input type="file" name="profile_pic"></input><br/><br/>   
+     <input type="file" name="profile_pic"/><br/><br/>   
      <input type="submit" name="upload_pic" value="Upload Image"/>
  </form>
  <p>Change Password</p><br/>
- Your Old Password:<inpute type="password" name="oldpassword" id="oldpassword" size="30"/><br/>
- Your New Password:<inpute type="password" name="newpassword" id="newpassword" size="30"/><br/> 
-Repeat New Password:<inpute type="password" name="newpassword2" id="newpassword2" size="30"/><br/>
+ 
+ Your Old Password:<input type="password" name="oldpassword" id="oldpassword" size="30"/><br/>
+ Your New Password:<input type="password" name="newpassword" id="newpassword" size="30"/><br/> 
+Repeat New Password:<input type="password" name="newpassword2" id="newpassword2" size="30"/><br/>
 <input type="submit" name="changepassword" id="changepassword"/>
- </form>
+ <!--</form>-->
        <hr/>
  <form>
      <%

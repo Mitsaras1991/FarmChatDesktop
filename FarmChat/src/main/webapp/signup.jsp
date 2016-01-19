@@ -10,7 +10,7 @@
 <%@include file="includes/dbconnection.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@include  file="includes/initheader.jsp"%>
+<%@include  file="includes/profileheader.jsp"%>
         <%
 String firstname=request.getParameter("fname");
 pageContext.setAttribute("firstname",firstname,PageContext.SESSION_SCOPE);
@@ -19,19 +19,19 @@ String lastname=request.getParameter("lname");
 pageContext.setAttribute("lastname",lastname,PageContext.SESSION_SCOPE);
 
 String username_db=request.getParameter("username");
-pageContext.setAttribute("username",username,PageContext.SESSION_SCOPE);
+pageContext.setAttribute("username",username_db,PageContext.SESSION_SCOPE);
 
 String email=request.getParameter("email");
 pageContext.setAttribute("email",email,PageContext.SESSION_SCOPE);
 
 String password_db=request.getParameter("password");
-pageContext.setAttribute("password",password,PageContext.SESSION_SCOPE);
+pageContext.setAttribute("password",password_db,PageContext.SESSION_SCOPE);
 
 String password2=request.getParameter("password2");
 pageContext.setAttribute("password2",password2,PageContext.SESSION_SCOPE);
 
 String sql="insert into users(username,first_name,last_name,email,password,activated) values('"+username_db+"','"+firstname+"','"+lastname+"','"+email+"','"+password_db+"',0)";
-%>
+
 
 String users_email=("select email from users");
 String users_un=("select username from users");
@@ -40,17 +40,17 @@ ResultSet rs_email=conn.createStatement().executeQuery(users_email);
 boolean check_email=false;
 boolean check_un=false;
         
-while(rs_email.next() && check_email = false){
+while(rs_email.next() && check_email){ // && check_email = false
     String email_db=rs_email.getString(1);
     if(email_db==email){check_email=true;}
 }
-while(rs_un.next() && check_un=false ){
+while(rs_un.next() && check_un){ // && check_un=false 
     String un_db=rs_email.getString(1);
     if(un_db==email){
         check_un=true;
     }
 }
-
+%>
 <%
 if(username.equals("un_db") || email.equals("email_db"))
 {%>
@@ -80,7 +80,7 @@ This username or email already exists
          
     <%}
      else{%>
-     Couldnot Register in Database
+     Could not Register in Database
      <jsp:include page="index.jsp"/>
      <%}
     }

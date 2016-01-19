@@ -6,7 +6,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="includes/initheader.jsp" %>
+<%@include file="includes/profileheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
  <%@include file="includes/connection.jsp" %>
@@ -85,14 +85,6 @@ while(user_info.next()){
     <img  src='#' height="50" width='40'/>&nbsp;&nbsp;
     <img  src='#' height="50" width='40'/>&nbsp;&nbsp;
 </div>
-
-
-
-
-
-
-
-
 
 
  <%@include file="includes/footer.jsp" %>

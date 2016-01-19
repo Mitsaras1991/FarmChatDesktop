@@ -10,12 +10,12 @@
        <% 
       
        java.sql.Connection conn=null;
-       String url="jdbc:mysql://localhost/snapchat";
+       String url="jdbc:mysql://localhost:3306/snapchat";
        String Driver="com.mysql.jdbc.Driver";
        String username="root";
        String password="";
        try{
-       Class.forName(Driver);
+       Class.forName("com.mysql.jdbc.Driver").newInstance();
        conn=DriverManager.getConnection(url,username,password);
        if(conn==null){out.println("Cannot connect to DB");}
        }

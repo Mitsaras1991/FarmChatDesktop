@@ -14,6 +14,8 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
  <%@include file="includes/connection.jsp" %>
+ <%@include file="includes/profileheader.jsp" %>
+
  <%
  String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 %>

@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
              <title>FindJob</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
-<script scr="./js/main.js" text="text/javascript"></script>
+<script src="./js/main.js" type="text/javascript"></script>
     </head>
     <body>
         <% 
@@ -33,7 +33,7 @@
 	 <a href="profile.jsp"><%=usernamelog %></a>
 	  <a href="account_settings.jsp">Account Settings</a>
            <a href="my_messages.jsp">My Messages</a>
-	   <a href=logout.jsp">LogOut</a>
+	   <a href="logout.jsp">LogOut</a>
 	 </div>
 </div>
 <div id='wrapper'></div><br/><br/><br/><br/><br/>
