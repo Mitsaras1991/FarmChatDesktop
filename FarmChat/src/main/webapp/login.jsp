@@ -12,13 +12,13 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
  <%@include file="includes/connection.jsp" %>
   <%
-      String userLogin=request.getParameter("user_login");
-      pageContext.setAttribute("username",userLogin,pageContext.SESSION_SCOPE);
+      String user_logged=request.getParameter("user_login");
+      pageContext.setAttribute("username",user_logged,pageContext.SESSION_SCOPE);
       
       String passwordLogin=request.getParameter("password_login");
     pageContext.setAttribute("password",passwordLogin,pageContext.SESSION_SCOPE);
-  String sql_login="select id from users where username='"+userLogin+"'and password='"+passwordLogin+"'limit 1";
-   if(userLogin!=null && passwordLogin!=null){
+  String sql_login="select id from users where username='"+user_logged+"'and password='"+passwordLogin+"'limit 1";
+   if(user_logged!=null && passwordLogin!=null){
 //  userLogin=userLogin.replaceAll("#[^A-Za-z0-9]#i",userLogin);
 //  passwordLogin=passwordLogin.replaceAll("#[^A-Za-z0-9]#i", passwordLogin);
   ResultSet rs_login=conn.createStatement().executeQuery(sql_login);

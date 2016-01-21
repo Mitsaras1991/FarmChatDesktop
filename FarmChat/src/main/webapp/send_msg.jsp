@@ -13,7 +13,7 @@
  
  
 <% 
-String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 String user_msg_to=(String) request.getParameter("msg_to"); 
  ResultSet rs_msg_date=null;
 java.sql.Date date_added=rs_msg_date.getDate(1);
@@ -25,7 +25,7 @@ if(request.getParameter("submit")!=null){
 String msg_body=(String)request.getParameter("msg_body");
 if(msg_body!=""){
      String opened="no";
-String sql_send_msg=("insert into pvt_messages('user_from','user_to','msg_body','date','opened') values('"+usernamelog+"','"+user_msg_to+"','"+msg_body+"','"+date_added+"','"+opened+"')");
+String sql_send_msg=("insert into pvt_messages('user_from','user_to','msg_body','date','opened') values('"+user_logged+"','"+user_msg_to+"','"+msg_body+"','"+date_added+"','"+opened+"')");
 int rs_msg_sent=conn.createStatement().executeUpdate(sql_send_msg);
 if(rs_msg_sent==1){
  %>

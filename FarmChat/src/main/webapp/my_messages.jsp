@@ -15,8 +15,8 @@
  
  <h2>My Unread Messages</h2><br/><br/>
 <%
-String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
-String sql_fetch_msg=("Select * from pvt_messages where user_to='"+usernamelog+"and opened='no'");
+String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+String sql_fetch_msg=("Select * from pvt_messages where user_to='"+user_logged+"'and opened='no'");
 ResultSet rs_my_msg=conn.createStatement().executeQuery(sql_fetch_msg);
 
 while(rs_my_msg.next()){
@@ -38,7 +38,7 @@ out.println("<hr/><br/>");
   <h2>My Read Messages</h2><br/><br/>
 <%
 
-String sql_fetch_msg_ur=("Select * from pvt_messages where user_to='"+usernamelog+"and opened='yes'");
+String sql_fetch_msg_ur=("Select * from pvt_messages where user_to='"+user_logged+"'and opened='yes'");
 ResultSet rs_my_msg_ur=conn.createStatement().executeQuery(sql_fetch_msg_ur);
 
 while(rs_my_msg_ur.next()){

@@ -12,9 +12,9 @@
  <%@include file="includes/connection.jsp" %>
  <%@include file="includes/dbconnection.jsp" %>
  <%
- String user=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+ String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
  
- if(user!=null){
+ if(user_logged!=null){
  
  
  }

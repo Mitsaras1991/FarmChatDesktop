@@ -16,7 +16,7 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
  <%@include file="includes/connection.jsp" %>
 <%
-String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 
 if(request.getParameter("profile_pic")!=null){
    File file=null;
@@ -72,7 +72,7 @@ if(request.getParameter("profile_pic")!=null){
          
              }
             
-       String sql_upload_pic=("UPDATE users SET profile_pic='"+file+"' where username='"+usernamelog+"'");
+       String sql_upload_pic=("UPDATE users SET profile_pic='"+file+"' where username='"+user_logged+"'");
             try{
    int action=conn.createStatement().executeUpdate(sql_upload_pic);
     conn.setAutoCommit(true);

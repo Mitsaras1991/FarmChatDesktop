@@ -52,20 +52,20 @@ while(rs_un.next() && check_un){ // && check_un=false
 }
 %>
 <%
-if(username.equals("un_db") || email.equals("email_db"))
+if(username_db.equals("un_db") || email.equals("email_db"))
 {%>
 This username or email already exists
 <jsp:include page="index.jsp"/>
 <%}
- if(!password.equals(password2)){%>
+ if(!password_db.equals(password2)){%>
     Passwords does not match
     <jsp:include page="index.jsp"/>
     <%}
- if(password.length()>25){%>
+ if(password_db.length()>25){%>
     Passwords does not match
     <jsp:include page="index.jsp"/>
     <%}
- if(firstname.length()>25 || lastname.length()>25 || username.length()>25 ){%>
+ if(firstname.length()>25 || lastname.length()>25 || username_db.length()>25 ){%>
     The maximum length of username/first name/last name does not exceed 25 characters !
     <jsp:include page="index.jsp"/>
     <%}

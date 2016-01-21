@@ -18,7 +18,7 @@
 
  
  <%
-    String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+    String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
     String photos_uid=(String) pageContext.getAttribute("uid", PageContext.SESSION_SCOPE);
     %>
 <div class="textHeader"><h2>Photos in this Album: </h2>></div>

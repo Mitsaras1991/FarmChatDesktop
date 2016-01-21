@@ -17,7 +17,7 @@
  <%@include file="includes/profileheader.jsp" %>
 
  <%
- String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+ String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 %>
  <h2>Upload Your Photos: </h2>
  <hr/>
@@ -83,7 +83,7 @@ if(request.getParameter("album_photo")!=null){
          
              }
             
-       String sql_upload_photo=("UPDATE users SET image_url='"+file+"' where username='"+usernamelog+"'");
+       String sql_upload_photo=("UPDATE users SET image_url='"+file+"' where username='"+user_logged+"'");
             try{
    int action=conn.createStatement().executeUpdate(sql_upload_photo);
     conn.setAutoCommit(true);

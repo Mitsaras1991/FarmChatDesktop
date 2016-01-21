@@ -12,7 +12,7 @@
  <%@include file="includes/dbconnection.jsp" %>
  
  <%
- String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+ String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
  String user_view= request.getParameter("username_other_user");
  String sql_post="select * from posts where user_posted_to='"+user_view+"'order by id desc limit 10";
 ResultSet rs_view_posts_other_user=conn.createStatement().executeQuery(sql_post);

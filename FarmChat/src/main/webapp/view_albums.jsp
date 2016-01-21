@@ -18,13 +18,13 @@
 
  
 <%
-    String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+    String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 %>
-<div class="textHeader"><h2><%=usernamelog%>'s Albums</h2>></div>
+<div class="textHeader"><h2><%=user_logged%>'s Albums</h2>></div>
 <table>
     <tr>
 <%    
-String sql_albums="select * from albums where created_by='"+usernamelog+"'";
+String sql_albums="select * from albums where created_by='"+user_logged+"'";
     ResultSet user_albums=conn.createStatement().executeQuery(sql_albums);
     while(user_albums.next()){
         int id=user_albums.getInt(1);

@@ -19,10 +19,10 @@
  String firstname=request.getParameter("firstname");
  String lastname=request.getParameter("lastname");
  String bio_profile=request.getParameter("aboutyou");
- String usernamelog=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+ String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
  
 
- String sql_user="select password from user where username='"+usernamelog+"'";
+ String sql_user="select password from user where username='"+user_logged+"'";
 String db_password=null;
 ResultSet rs=conn.createStatement().executeQuery(sql_user);
 while(rs.next()){
@@ -32,7 +32,7 @@ db_password=rs.getString(6);
 if("changepassword"!=null){
     if(db_password==oldpassword){
   if(newpassword==newpassword2){
-  String resetPass="update users set password='"+newpassword+"where username='"+usernamelog+"'";
+  String resetPass="update users set password='"+newpassword+"where username='"+user_logged+"'";
   ResultSet resetPassword=conn.createStatement().executeQuery(resetPass);
   }
   
@@ -66,25 +66,25 @@ if("changepassword"!=null){
  
  <%
  if("editprofile"!=null){
- String sql_edit_profile=("select first_name,last_name,bio from users where username='"+usernamelog+"'");
+ String sql_edit_profile=("select first_name,last_name,bio from users where username='"+user_logged+"'");
  ResultSet profileInfo=conn.createStatement().executeQuery(sql_user);
 String user_firstname=(String)pageContext.getAttribute("user_firstname", PageContext.SESSION_SCOPE);
 String user_lastname=(String) pageContext.getAttribute("user_lastname", PageContext.SESSION_SCOPE);
 String user_bio=(String) pageContext.getAttribute("user_bio", PageContext.SESSION_SCOPE);
 
  if(firstname!=null && firstname!=user_firstname ){
-  String sql_update_firstname=("update users set first_name='"+firstname+"where username='"+usernamelog+"'");
+  String sql_update_firstname=("update users set first_name='"+firstname+"where username='"+user_logged+"'");
  ResultSet update_firstname=conn.createStatement().executeQuery(sql_update_firstname);
  }
  if(lastname!=null && lastname!=user_lastname){
- String sql_update_lastname=("update users set last_name='"+lastname+"where username='"+usernamelog+"'");
+ String sql_update_lastname=("update users set last_name='"+lastname+"where username='"+user_logged+"'");
  ResultSet update_lastname=conn.createStatement().executeQuery(sql_update_lastname);
  
  }
  
  if(bio_profile!=null && bio_profile!=user_bio){
  
-  String sql_update_bio=("update users set bio='"+bio_profile+"where username='"+usernamelog+"'");
+  String sql_update_bio=("update users set bio='"+bio_profile+"where username='"+user_logged+"'");
   ResultSet update_lastname=conn.createStatement().executeQuery(sql_update_bio);
  }
  else{%>
