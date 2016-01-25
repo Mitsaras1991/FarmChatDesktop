@@ -9,4 +9,11 @@
             30
         </session-timeout>
     </session-config>
+    <context-param> 
+    <description>Location to store uploaded file</description> 
+    <param-name>file-upload</param-name> 
+    <param-value>
+         c:\Users\
+     </param-value> 
+</context-param>
 </web-app>

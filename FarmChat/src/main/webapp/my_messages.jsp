@@ -60,7 +60,10 @@ if(rs_my_msg_ur==null){
 out.println("You havenot any messages");
 }
 %>
- 
+ <form action="send_msg.jsp" method="POST">
+     <h2>Send a message</h2> 
+     <input type="submit" name="submit" value="Send Message"/>
+ </form>
 
  
  

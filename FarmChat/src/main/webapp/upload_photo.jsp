@@ -19,16 +19,8 @@
  <%
  String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 %>
- <h2>Upload Your Photos: </h2>
- <hr/>
- 
- <form action="" method="POST" enctype="multipart/form-data">
-     <input type="file" name="album_photo"/><br/><br/>   
-     <input type="submit" name="upload_pic" value="Upload Image"/>
- </form>
  
  <%
-
 if(request.getParameter("album_photo")!=null){
    File file=null;
    int maxFileSize = 5000 * 1024;
@@ -106,4 +98,77 @@ else{%>
 <%
 response.sendRedirect("upload_photo.jsp");
 }
+%>
+
+<%
+//Statement st=null;
+//Connection cn=null;
+//try
+//{
+//    String ImageFile="";
+//    String itemName = "";
+//    boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+//    if (!isMultipart)
+//    {
+//    }
+//    else
+//    {
+//        FileItemFactory factory = new DiskFileItemFactory();
+//        ServletFileUpload upload = new ServletFileUpload(factory);
+//        List items = null;
+//        try
+//        {
+//            items = upload.parseRequest(request);
+//        }
+//        catch (FileUploadException e)
+//        {
+//            e.getMessage();
+//        }
+// 
+//        Iterator itr = items.iterator();
+//        while (itr.hasNext())
+//        {
+//            FileItem item = (FileItem) itr.next();
+//            if (item.isFormField())
+//            {
+//                String name = item.getFieldName();
+//                String value = item.getString();
+//                if(name.equals("ImageFile"))
+//                {
+//                    ImageFile=value;
+//                }
+// 
+//            }
+//            else
+//            {
+//                try
+//                {
+//                    itemName = item.getName();
+//                    File savedFile = new File(config.getServletContext().getRealPath("/")+"c:\\album\\"+itemName);
+//                    item.write(savedFile);
+//                }
+//                catch (Exception e)
+//                {
+//                    out.println("Error"+e.getMessage());
+//                }
+//            }
+//        }
+//        try
+//        {
+           // String sql_upload_photo=("UPDATE users SET image_url='"+file+"' where username='"+user_logged+"'");
+//            st=cn.createStatement();
+//            st.executeUpdate("UPDATE users SET image_url='"+itemName+"' where username='"+user_logged+"'");
+ //"insert into test(image) values ('"+itemName+"')"
+//        }
+//        catch(Exception el)
+//        {
+//            out.println("Inserting error"+el.getMessage());
+//        } %>
+<!--//        <script type="text/javascript">alert("Put something to upload");</script>-->
+   <% // response.sendRedirect("upload_photo.jsp");
+//    }
+//}
+//catch (Exception e){
+//    out.println(e.getMessage());
+//}
 %>

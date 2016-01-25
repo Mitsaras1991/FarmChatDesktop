@@ -20,7 +20,7 @@
 <%
     String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 %>
-<div class="textHeader"><h2><%=user_logged%>'s Albums</h2>></div>
+<div class="textHeader"><h2><%=user_logged%>'s Albums</h2></div>
 <table>
     <tr>
 <%    
@@ -46,6 +46,17 @@ String sql_albums="select * from albums where created_by='"+user_logged+"'";
 }%>
     </tr>
 </table>
+    <br/><br/><br/>
+ <h2>Upload Your Photos: </h2>
+ <hr/>
+ 
+ <form action="view_albums.jsp" method="POST" enctype="multipart/form-data">
+  File to upload: <input type="file" name="upfile"><br/>
+ <br/>
+  <br/>
+  <input type="submit" value="Press"> to upload the file!
+</form>
+ 
    <% 
             String album_title=(String) pageContext.getAttribute("album_title", PageContext.SESSION_SCOPE);
             String uid=(String) pageContext.getAttribute("uid", PageContext.SESSION_SCOPE);

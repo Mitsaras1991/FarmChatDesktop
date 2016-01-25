@@ -4,13 +4,13 @@
     Author     : Mits
 --%>
 
-<%@page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
        <% 
       
        java.sql.Connection conn=null;
-       String url="jdbc:mysql://localhost:3306/snapchat";
+       String url="jdbc:mysql://localhost:3306/snapchat";//"jdbc:mysql://localhost:3306/snapchat?zeroDateTimeBehavior=convertToNull";
        String Driver="com.mysql.jdbc.Driver";
        String username="root";
        String password="";

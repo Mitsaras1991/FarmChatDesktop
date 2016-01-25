@@ -70,11 +70,12 @@ while(user_info.next()){
 <p><%=user_lastname%></p>
 <p><%=user_bio%></p>
 </div>
-
+<form action="view_albums.jsp" method="POST">
 <div class="textHeader"><%=user_logged%>'s Albums
 <input type="submit" name="View Albums" value="View Albums" style="background-color:#006fc4; float: right; border:1px solid #666;"/>
 </div>
-
+</form>
+<br><br>
 <div class="textHeader"><%=user_logged%>'s Friends</div>
 <div class="profileLeftSideContent">
     <img  src='#' height="50" width='40'/>&nbsp;&nbsp;  

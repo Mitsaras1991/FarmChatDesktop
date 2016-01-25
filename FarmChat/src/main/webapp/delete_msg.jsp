@@ -23,7 +23,7 @@ response.sendRedirect("my_messages.jsp");
 }
 else{%>
 
-<script type="javascript"> alert("Message has not been deleted ")</script>
+<script type="text/javascript"> alert("Message has not been deleted ");</script>
 
 <%
 response.sendRedirect("my_messages.jsp");

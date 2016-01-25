@@ -16,8 +16,8 @@
  <%@include file="includes/connection.jsp" %>
  <%@include file="includes/profileheader.jsp" %>
 
- 
- <%
+
+  <%
     String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
     String photos_uid=(String) pageContext.getAttribute("uid", PageContext.SESSION_SCOPE);
     %>
@@ -51,4 +51,42 @@ String sql_photos="select * from photos where uid='"+photos_uid+"'";
             String album_title=(String) pageContext.getAttribute("album_title", PageContext.SESSION_SCOPE);
             String uid=(String) pageContext.getAttribute("uid", PageContext.SESSION_SCOPE);
 %>
-
+ 
+<!--<html>
+    <head>
+        <title>View Image Page</title>
+    </head>
+    <body>-->
+<!--        <table border="0">  width="100%" height="100%" border="0"-->
+       
+        <%
+//            ResultSet rs=null;
+//            try
+//            {
+//                Statement st=null;
+//                Connection cn=null;
+//                st=cn.createStatement();
+//                rs=st.executeQuery("select image_url from photos");
+// 
+//                while(rs.next())
+//            {
+            %>
+<!--        <table border="1">  width="70%" height="160" align="center"
+            <tr>-->
+            <!-- Mention Directory where your images has been saved-->
+ 
+<!--                <td><img src="image/<%=//rs.getString("image") %>" width="115" height="128" /></td>
+            </tr>
+        </table>-->
+        <%
+//        }
+//    }
+//    catch(Exception e)
+//    {
+//    out.print(""+e.getMessage());
+//    }
+%>
+ 
+  
+<!--</body>
+</html>-->

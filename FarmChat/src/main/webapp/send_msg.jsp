@@ -29,7 +29,7 @@ String sql_send_msg=("insert into pvt_messages('user_from','user_to','msg_body',
 int rs_msg_sent=conn.createStatement().executeUpdate(sql_send_msg);
 if(rs_msg_sent==1){
  %>
-    <script type="javascript"> alert("Your message has been send")</script>
+    <script type="text/javascript"> alert("Your message has been send");</script>
 
 
 <%

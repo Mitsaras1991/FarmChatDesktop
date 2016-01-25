@@ -30,8 +30,6 @@ pageContext.setAttribute("password",password_db,PageContext.SESSION_SCOPE);
 String password2=request.getParameter("password2");
 pageContext.setAttribute("password2",password2,PageContext.SESSION_SCOPE);
 
-String sql="insert into users(username,first_name,last_name,email,password,activated) values('"+username_db+"','"+firstname+"','"+lastname+"','"+email+"','"+password_db+"',0)";
-
 
 String users_email=("select email from users");
 String users_un=("select username from users");
@@ -72,9 +70,13 @@ This username or email already exists
  else{%>
     <% 
     try{
-   int action=conn.createStatement().executeUpdate(sql);
-    conn.setAutoCommit(true);
-     if(action==1){%>   
+        Statement statement = conn.createStatement();
+        String sql="insert into users(username,first_name,last_name,email,password,activated) values('"+username_db+"','"+firstname+"','"+lastname+"','"+email+"','"+password_db+"',0)";
+        statement.executeUpdate(sql);
+        int action = statement.executeUpdate(sql); 
+//   int action=conn.createStatement().executeUpdate(sql);
+//    conn.setAutoCommit(true);
+     if(action==1){ %>   
             
      <jsp:forward page="profile.jsp"/>
          
