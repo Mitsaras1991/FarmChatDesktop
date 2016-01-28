@@ -8,20 +8,36 @@
 <%@include file="includes/profileheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
- <%@include file="includes/connection.jsp" %>
- <%@include file="includes/dbconnection.jsp" %>
+ <%--<%@include file="includes/connection.jsp" %>--%>
+ <%--<%@include file="includes/dbconnection.jsp" %>--%>
 
  
  
  <h2>My Unread Messages</h2><br/><br/>
 <%
+
+ Connection conn = null;
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmchat", "root", "");
+
+                if(conn!=null){
+                    out.println("Connected");
+                }else{
+                    out.println("Cannot connect");
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
 String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 String sql_fetch_msg=("Select * from pvt_messages where user_to='"+user_logged+"'and opened='no'");
 ResultSet rs_my_msg=conn.createStatement().executeQuery(sql_fetch_msg);
 
 while(rs_my_msg.next()){
 
- int id=rs_my_msg.getInt(1);
+
 String user_from=rs_my_msg.getString(2);
 String user_to=rs_my_msg.getString(3);
 String msg_body=rs_my_msg.getString(4);

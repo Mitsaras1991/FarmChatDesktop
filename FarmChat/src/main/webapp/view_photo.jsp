@@ -10,14 +10,30 @@
 <%@ page import="org.apache.commons.fileupload.*" %>
 <%@ page import="org.apache.commons.fileupload.disk.*" %>
 <%@ page import="org.apache.commons.fileupload.servlet.*" %>
-<%@include file="includes/dbconnection.jsp" %>
+<%--<%@include file="includes/dbconnection.jsp" %>--%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
- <%@include file="includes/connection.jsp" %>
+ <%--<%@include file="includes/connection.jsp" %>--%>
  <%@include file="includes/profileheader.jsp" %>
 
 
   <%
+  
+   Connection conn = null;
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmchat", "root", "");
+
+                if(conn!=null){
+                    out.println("Connected");
+                }else{
+                    out.println("Cannot connect");
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+  
     String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
     String photos_uid=(String) pageContext.getAttribute("uid", PageContext.SESSION_SCOPE);
     %>
@@ -29,9 +45,9 @@
 String sql_photos="select * from photos where uid='"+photos_uid+"'";
     ResultSet user_photos=conn.createStatement().executeQuery(sql_photos);
     while(user_photos.next()){
-        int id=user_photos.getInt(1);
+       
         String uid=user_photos.getString(2);
-        //String username =user_photos.getString(3);
+        String username =user_photos.getString(3);
         java.sql.Date date_posted=user_photos.getDate(4);
         String description=user_photos.getString(5);
         String image_url=user_photos.getString(6);

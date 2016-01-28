@@ -9,10 +9,26 @@
 <%@include file="includes/profileheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
- <%@include file="includes/connection.jsp" %>
- <%@include file="includes/dbconnection.jsp" %>
+ <%--<%@include file="includes/connection.jsp" %>--%>
+ <%--<%@include file="includes/dbconnection.jsp" %>--%>
 
  <%
+ 
+  Connection conn = null;
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmchat", "root", "");
+
+                if(conn!=null){
+                    out.println("Connected");
+                }else{
+                    out.println("Cannot connect");
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+ 
  String post=(String)request.getAttribute("post");
  pageContext.setAttribute("post",post,pageContext.SESSION_SCOPE);
  String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
@@ -64,7 +80,7 @@
      
  %>
 
- <script type="javascript">alert("Put something to post")</script>
+ <script type="text/javascript">alert("Put something to post");</script>
  <%}
  
  %>

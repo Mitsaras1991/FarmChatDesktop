@@ -8,8 +8,23 @@
 <%@include file="includes/indexheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
- <%@include file="includes/connection.jsp" %>
+<%-- <%@include file="includes/connection.jsp" %>--%>
+<%
+     Connection conn = null;
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmchat", "root", "");
 
+                if(conn!=null){
+                    out.println("Connected");
+                }else{
+                    out.println("Cannot connect");
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+    %>
 		<table>
 			<tr>
 				<td width="60%" valign="top" >

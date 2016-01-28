@@ -10,17 +10,31 @@
 <%@ page import="org.apache.commons.fileupload.*" %>
 <%@ page import="org.apache.commons.fileupload.disk.*" %>
 <%@ page import="org.apache.commons.fileupload.servlet.*" %>
-<%@include file="includes/dbconnection.jsp" %>
+<%--<%@include file="includes/dbconnection.jsp" %>--%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
- <%@include file="includes/connection.jsp" %>
+ <%--<%@include file="includes/connection.jsp" %>--%>
  <%@include file="includes/profileheader.jsp" %>
 
  <%
- String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
-%>
  
- <%
+  Connection conn = null;
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmchat", "root", "");
+
+                if(conn!=null){
+                    out.println("Connected");
+                }else{
+                    out.println("Cannot connect");
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+ 
+ String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
+
 if(request.getParameter("album_photo")!=null){
    File file=null;
    int maxFileSize = 5000 * 1024;

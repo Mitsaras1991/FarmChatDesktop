@@ -17,7 +17,11 @@
        try{
        Class.forName("com.mysql.jdbc.Driver").newInstance();
        conn=DriverManager.getConnection(url,username,password);
-       if(conn==null){out.println("Cannot connect to DB");}
+       if(conn==null){
+           out.println("Cannot connect to DB");
+       }else{
+           out.println("Connected to DB");
+       }
        }
        catch(Exception e){e.printStackTrace();
       }
