@@ -37,17 +37,13 @@
 //  userLogin=userLogin.replaceAll("#[^A-Za-z0-9]#i",userLogin);
 //  passwordLogin=passwordLogin.replaceAll("#[^A-Za-z0-9]#i", passwordLogin);
   ResultSet rs_login=conn.createStatement().executeQuery(sql_login);
+      
     conn.setAutoCommit(true);
-     if(rs_login.getRow()==1){
+     if(rs_login.next()){
      
-     %>
-         
-            
-     <jsp:forward page="profile.jsp"/>
-     
-         
+     %>      
+     <jsp:forward page="profile.jsp"/>  
     <%
-     
      
      }
      else{
