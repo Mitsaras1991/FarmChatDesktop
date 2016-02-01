@@ -29,9 +29,9 @@
             }
  
  String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
- String user_view= request.getParameter("username_other_user");
- String sql_post="select * from posts where user_posted_to='"+user_view+"'order by id desc limit 10";
-ResultSet rs_view_posts_other_user=conn.createStatement().executeQuery(sql_post);
+ String user_view= (String) pageContext.getAttribute("username_other_user", PageContext.SESSION_SCOPE);
+ String sql_post="select * from posts where user_posted_to='"+user_view+"'order by date_added desc limit 10";
+ ResultSet rs_view_posts_other_user=conn.createStatement().executeQuery(sql_post);
  %>
  
  
@@ -68,10 +68,10 @@ String user_lastname=null,user_firstname=null,user_bio=null;
 String sql_user_info=("select first_name,last_name,bio from users where username='"+user_view+"'");
 ResultSet user_info=conn.createStatement().executeQuery(sql_user_info);
 while(user_info.next()){
- user_firstname=user_info.getString(1);
+ user_firstname=user_info.getString(3);
  pageContext.setAttribute("user_firstname",user_firstname,pageContext.SESSION_SCOPE);
- user_lastname=user_info.getString(2);
- user_bio=user_info.getString(3);
+ user_lastname=user_info.getString(4);
+ user_bio=user_info.getString(9);
 }
 
 
@@ -89,7 +89,7 @@ while(user_info.next()){
  
  <form action="send_msg.jsp?msg_to=<%=user_view%>" method="POST">
     
-        <input type="submit" name="sendmsg" value="Send Message"/>
+        <input type="submit" name="send_msg" value="Send Message"/>
 </form>
  
  <div class="textHeader"><%=user_view%>'s Friends</div>

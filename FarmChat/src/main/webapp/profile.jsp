@@ -35,7 +35,7 @@ ResultSet rs=conn.createStatement().executeQuery(sql_post);
 String username_post;
 
 %>
-<sql:query dataSource="${snapchat}" sql="select id from users where username="<%=user_logged%> var="profile_info" ></sql:query>
+<sql:query dataSource="${farmchat}" sql="select username from users where username="<%=user_logged%> var="profile_info" ></sql:query>
 
 <div class="postForm"> 
      <form action="send_post.jsp?name=<%=user_logged%>" method="POST">
