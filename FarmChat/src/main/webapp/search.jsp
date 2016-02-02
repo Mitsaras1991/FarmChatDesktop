@@ -29,6 +29,7 @@
             }
        
        String user_to_find=request.getParameter("find");
+       pageContext.setAttribute("user_to_find",user_to_find,pageContext.SESSION_SCOPE);
        String sql_user_to_find_by_firstname=("select * from users where first_name='"+user_to_find+"'");
        String sql_user_to_find_by_lastname=("select * from users where last_name='"+user_to_find+"'"); 
        ResultSet rs_firstname=conn.createStatement().executeQuery(sql_user_to_find_by_firstname);
@@ -54,8 +55,8 @@
         if(rs_lastname!=null){
             
             while(rs_lastname.next()){
-                String username_other_user=rs_lastname.getString(2);
-            String firstname_other_user=rs_lastname.getString(3);
+          String username_other_user=rs_lastname.getString(2);
+          String firstname_other_user=rs_lastname.getString(3);
           String lastname_other_user=rs_lastname.getString(4);
           String profile_pic_other_user=rs_lastname.getString(10);
           out.println("<table height='125' width='75'>");

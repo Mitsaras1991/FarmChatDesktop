@@ -30,6 +30,7 @@
  
  String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
  String user_view= (String) pageContext.getAttribute("username_other_user", PageContext.SESSION_SCOPE);
+ pageContext.setAttribute("user_view",user_view,pageContext.SESSION_SCOPE);
  String sql_post="select * from posts where user_posted_to='"+user_view+"'order by date_added desc limit 10";
  ResultSet rs_view_posts_other_user=conn.createStatement().executeQuery(sql_post);
  %>
@@ -89,7 +90,7 @@ while(user_info.next()){
  
  <form action="send_msg.jsp?msg_to=<%=user_view%>" method="POST">
     
-        <input type="submit" name="send_msg" value="Send Message"/>
+    <input type="submit" name="send_msg" value="Send Message"/>
 </form>
  
  <div class="textHeader"><%=user_view%>'s Friends</div>
