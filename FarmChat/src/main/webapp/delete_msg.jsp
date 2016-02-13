@@ -25,21 +25,22 @@
                 e.printStackTrace();
             }
 
-String msg_to_delete=(String)request.getParameter("id_msg");
-String sql_delete_msg=("delete * from pvt_messages where id='"+msg_to_delete+"'");
+
+Object msg_to_delete=session.getAttribute("id_msg");
+pageContext.setAttribute("msg_to_delete_string", msg_to_delete);
+String sql_delete_msg=("delete from pvt_messages where id='"+msg_to_delete+"'");
 try{
-   int action=conn.createStatement().executeUpdate(sql_delete_msg);
+    int action=conn.createStatement().executeUpdate(sql_delete_msg);
     conn.setAutoCommit(true);
-if(action==1){
-
-response.sendRedirect("my_messages.jsp");
-
-}
-else{%>
-
-<script type="text/javascript"> alert("Message has not been deleted ");</script>
-
-<%
+    if(action==1){
+        %>      
+        <jsp:forward page="profile.jsp"/>  
+        <%
+    }
+else{
+        %>
+        <script type="text/javascript"> alert("Message has not been deleted ");</script>
+        <%
 response.sendRedirect("my_messages.jsp");
 
 }

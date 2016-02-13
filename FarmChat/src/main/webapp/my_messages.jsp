@@ -78,7 +78,8 @@ try{
     conn.setAutoCommit(true);
 
     while(rs_my_msg_ur.next()){
-        int id=rs_my_msg_ur.getRow();
+        int id_msg=rs_my_msg_ur.getInt(6);
+        session.setAttribute("id_msg" , id_msg);
         String user_from= rs_my_msg_ur.getString(1);
         String user_to=rs_my_msg_ur.getString(2);
         String msg_body=rs_my_msg_ur.getString(3);
@@ -87,8 +88,8 @@ try{
         out.println("<b><a href=profile_other_user.jsp?username_other_user='"+user_from+"'>");
         out.println("'"+user_from+"'</a></b>");
         out.println("<textarea cols='25' rows='10'>"+msg_body+"</textarea>");
-        out.println("<a href='delete_msg.jsp?id_msg=\'"+id+"\''>Delete</a>");
-        out.println("<a href='send_msg.jsp?msg_to=\'"+user_from+"\''>Delete</a>");
+        out.println("<b><a href=delete_msg.jsp?user_to='"+id_msg+">Delete</a>");
+        out.println("<a href='send_msg.jsp?msg_to=\'"+user_from+"\''>Send a message</a>");
     }
 }
 catch(Exception e){
