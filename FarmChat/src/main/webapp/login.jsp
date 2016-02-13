@@ -27,11 +27,12 @@
                 e.printStackTrace();
             }
             
-      String user_logged=request.getParameter("user_login");
-      pageContext.setAttribute("username",user_logged,pageContext.SESSION_SCOPE);
+  String user_logged=request.getParameter("user_login");
+  //pageContext.setAttribute("username",user_logged,pageContext.SESSION_SCOPE);
       
-      String passwordLogin=request.getParameter("password_login");
-    pageContext.setAttribute("password",passwordLogin,pageContext.SESSION_SCOPE);
+  String passwordLogin=request.getParameter("password_login");
+  pageContext.setAttribute("password",passwordLogin,pageContext.SESSION_SCOPE);
+  
   String sql_login="select username from users where username='"+user_logged+"'and password='"+passwordLogin+"'limit 1";
    if(user_logged!=null && passwordLogin!=null){
 //  userLogin=userLogin.replaceAll("#[^A-Za-z0-9]#i",userLogin);
@@ -40,7 +41,7 @@
       
     conn.setAutoCommit(true);
      if(rs_login.next()){
-     
+     pageContext.setAttribute("username",user_logged,pageContext.SESSION_SCOPE);
      %>      
      <jsp:forward page="profile.jsp"/>  
     <%

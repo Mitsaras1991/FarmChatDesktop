@@ -33,20 +33,38 @@
 
 String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
 String sql_fetch_msg=("Select * from pvt_messages where user_to='"+user_logged+"'and opened='no'");
-ResultSet rs_my_msg=conn.createStatement().executeQuery(sql_fetch_msg);
+//ResultSet rs_my_msg=conn.createStatement().executeQuery(sql_fetch_msg);
 
-while(rs_my_msg.next()){
-
-
-String user_from=rs_my_msg.getString(2);
-String user_to=rs_my_msg.getString(3);
-String msg_body=rs_my_msg.getString(4);
-java.sql.Date date=rs_my_msg.getDate(5);
-String opened=rs_my_msg.getString(6);
-out.println("<b><a href=profile_other_user.jsp?username_other_user='"+user_from+"'>");
-out.println("'"+user_from+"'</a></b>");
-out.println(msg_body);
-out.println("<hr/><br/>");
+try{
+    ResultSet rs_my_msg=conn.createStatement().executeQuery(sql_fetch_msg);
+    conn.setAutoCommit(true);
+    
+    while(rs_my_msg.next()){
+    
+        String user_from=rs_my_msg.getString(1);
+        String user_to=rs_my_msg.getString(2);
+        String msg_body=rs_my_msg.getString(3);
+        java.sql.Date date=rs_my_msg.getDate(4);
+        String opened=rs_my_msg.getString(5);
+        
+        if(rs_my_msg==null)
+            out.println("You havenot any messages");
+        else
+        {
+        out.println("<table height='125' width='75'>");
+        out.println("<b><a href=profile_other_user.jsp?username_other_user='"+user_from+"'>");
+        out.println("'"+user_from+"'</a></b>");
+        out.println("msg_body");
+        out.println("<textarea cols='25' rows='10'>"+msg_body+"</textarea>");
+        out.println("</hr></br>");
+        out.println("</table>");
+        String sql_update=("update pvt_messages set opened='yes' where user_to='"+user_to+"'");
+        int action=conn.createStatement().executeUpdate(sql_update);
+        }
+    }
+}
+catch(Exception e){
+    e.printStackTrace();
 }
 %>
 
@@ -54,26 +72,27 @@ out.println("<hr/><br/>");
   <h2>My Read Messages</h2><br/><br/>
 <%
 
-String sql_fetch_msg_ur=("Select * from pvt_messages where user_to='"+user_logged+"'and opened='yes'");
-ResultSet rs_my_msg_ur=conn.createStatement().executeQuery(sql_fetch_msg_ur);
+String sql_fetch_msg_ur=("select * from pvt_messages where user_to='"+user_logged+"'and opened='yes'");
+try{
+    ResultSet rs_my_msg_ur=conn.createStatement().executeQuery(sql_fetch_msg_ur);
+    conn.setAutoCommit(true);
 
-while(rs_my_msg_ur.next()){
-
- int id=rs_my_msg.getInt(1);
-String user_from= rs_my_msg_ur.getString(2);
-String user_to=rs_my_msg_ur.getString(3);
-String msg_body=rs_my_msg_ur.getString(4);
-java.sql.Date date=rs_my_msg_ur.getDate(5);
-String opened= rs_my_msg_ur.getString(6);
-out.println("<b><a href=profile_other_user.jsp?username_other_user='"+user_from+"'>");
-out.println("'"+user_from+"'</a></b>");
-out.println("<textarea cols='25' rows='10' value='"+msg_body+"'/>");
-out.println("<a href=delete_msg.jsp?id_msg='"+id+"'>Delete</a>");
-out.println("<a href=send_msg.jsp?msg_to='"+user_from+"'>Delete</a>");
+    while(rs_my_msg_ur.next()){
+        int id=rs_my_msg_ur.getRow();
+        String user_from= rs_my_msg_ur.getString(1);
+        String user_to=rs_my_msg_ur.getString(2);
+        String msg_body=rs_my_msg_ur.getString(3);
+        java.sql.Date date=rs_my_msg_ur.getDate(4);
+        String opened= rs_my_msg_ur.getString(5);
+        out.println("<b><a href=profile_other_user.jsp?username_other_user='"+user_from+"'>");
+        out.println("'"+user_from+"'</a></b>");
+        out.println("<textarea cols='25' rows='10'>"+msg_body+"</textarea>");
+        out.println("<a href='delete_msg.jsp?id_msg=\'"+id+"\''>Delete</a>");
+        out.println("<a href='send_msg.jsp?msg_to=\'"+user_from+"\''>Delete</a>");
+    }
 }
-
-if(rs_my_msg_ur==null){
-out.println("You havenot any messages");
+catch(Exception e){
+    e.printStackTrace();
 }
 %>
  <form action="send_msg.jsp" method="POST">
