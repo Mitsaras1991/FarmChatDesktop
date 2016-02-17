@@ -1,5 +1,11 @@
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
+import org.junit.After;
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -42,6 +48,16 @@ public class my_messagesTest {
      * @return the my_messagesTest class instance.
      */
     
+    OutputStream outContent = null;
+    OutputStream errContent = null;
+    
+    @Before
+    public void setUpStreams() {
+    System.setOut(new PrintStream(outContent));
+    System.setErr(new PrintStream(errContent));
+    }
+    
+    
     @Test
     public my_messagesTest verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
@@ -68,5 +84,23 @@ public class my_messagesTest {
             }
         });
         return this;
+    }
+    
+   @Test
+    public void out() {
+    System.out.print("hello");
+    assertEquals("hello", outContent.toString());
+    }
+
+    @Test
+    public void err() {
+    System.err.print("hello again");
+    assertEquals("hello again", errContent.toString());
+    }
+    
+    @After
+    public void cleanUpStreams() {
+    System.setOut(null);
+    System.setErr(null);
     }
 }

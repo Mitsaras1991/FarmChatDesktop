@@ -30,32 +30,36 @@
 
 String user_logged=request.getParameter("user_login");
 pageContext.setAttribute("username",user_logged, PageContext.SESSION_SCOPE);
-String user_msg_to=(String) request.getParameter("user_view"); 
+//String user_msg_to=(String) request.getParameter("user_view"); 
+String user_msg_to = (String) pageContext.getAttribute("user_view", PageContext.SESSION_SCOPE);
 pageContext.setAttribute("user_msg_to",user_msg_to,pageContext.SESSION_SCOPE);
 
-ResultSet date_added=null;
-%>
-   Date dNow = new Date();
-   SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-   date_added=out.print(ft.format(dNow);
+//ResultSet date_added=null;
+Calendar date_added = Calendar.getInstance();
+   //Date dNow = new Date();
+   //SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+   //date_added=out.print(ft.format(ft);
  
- <%
+ 
 if(request.getParameter("send_message")!=null){ 
-String msg_body=(String)request.getParameter("msg_body");
-if(msg_body!=""){
-     String opened="no";
-String sql_send_msg=("insert into pvt_messages('user_from','user_to','msg_body','date','opened') values('"+user_logged+"','"+user_msg_to+"','"+msg_body+"','"+date_added+"','"+opened+"'");
-int rs_msg_sent=conn.createStatement().executeUpdate(sql_send_msg);
-if(rs_msg_sent!=0){
- %>
- <script type="text/javascript"> alert("Your message has been send");</script>
- 
-
-<%
-    response.sendRedirect("send_msg.jsp?msg_to='"+user_msg_to+"'");
-    
-}
-}
+    String msg_body=(String)request.getParameter("msg_body");
+    if(msg_body!=""){
+    String opened="no";
+    String sql_send_msg=("insert into pvt_messages('user_from','user_to','msg_body','date','opened') values('"+user_logged+"','"+user_msg_to+"','"+msg_body+"','"+date_added+"','"+opened+"'");
+    try{
+        int rs_msg_sent=conn.createStatement().executeUpdate(sql_send_msg);
+        conn.setAutoCommit(true);
+        if(rs_msg_sent!=0){
+            %>
+            <script type="text/javascript"> alert("Your message has been send");</script>
+            <%
+            response.sendRedirect("send_msg.jsp?msg_to='"+user_msg_to+"'");
+        }
+    }
+    catch(Exception e){
+        e.printStackTrace();
+    }
+    }
 }
  %>
  <h2>Message to <%=user_msg_to%></h2>

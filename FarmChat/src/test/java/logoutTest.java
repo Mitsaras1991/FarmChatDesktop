@@ -1,13 +1,7 @@
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-import java.util.List;
 import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,6 +25,7 @@ public class logoutTest {
     public logoutTest(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
+        assertEquals(this.data,null);
     }
 
     public logoutTest(WebDriver driver, Map<String, String> data, int timeout) {
@@ -70,5 +65,11 @@ public class logoutTest {
             }
         });
         return this;
+    }
+    
+    @Test
+    public void test_username(){
+        String username= "abcd";
+        assertEquals(username,"");
     }
 }
