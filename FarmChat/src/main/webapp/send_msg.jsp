@@ -1,9 +1,10 @@
 <%-- 
-    Document   : send_message
+    Document   : send_msg
     Created on : 2 Φεβ 2016, 5:33:10 πμ
     Author     : Mits
 --%>
-
+<!DOCTYPE html>
+<body>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="includes/profileheader.jsp" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -27,47 +28,22 @@
             }catch(Exception e){
                 e.printStackTrace();
             }
-
-String user_logged=request.getParameter("user_login");
-pageContext.setAttribute("username",user_logged, PageContext.SESSION_SCOPE);
-//String user_msg_to=(String) request.getParameter("user_view"); 
+String user_logged = (String) pageContext.getAttribute("user_login", PageContext.SESSION_SCOPE);
+pageContext.setAttribute("user_from",user_logged, PageContext.SESSION_SCOPE);
 String user_msg_to = (String) pageContext.getAttribute("user_view", PageContext.SESSION_SCOPE);
-pageContext.setAttribute("user_msg_to",user_msg_to,pageContext.SESSION_SCOPE);
-
-//ResultSet date_added=null;
-Calendar date_added = Calendar.getInstance();
-   //Date dNow = new Date();
-   //SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
-   //date_added=out.print(ft.format(ft);
+session.setAttribute("user_to",user_msg_to);
+%>
  
- 
-if(request.getParameter("send_message")!=null){ 
-    String msg_body=(String)request.getParameter("msg_body");
-    if(msg_body!=""){
-    String opened="no";
-    String sql_send_msg=("insert into pvt_messages('user_from','user_to','msg_body','date','opened') values('"+user_logged+"','"+user_msg_to+"','"+msg_body+"','"+date_added+"','"+opened+"'");
-    try{
-        int rs_msg_sent=conn.createStatement().executeUpdate(sql_send_msg);
-        conn.setAutoCommit(true);
-        if(rs_msg_sent!=0){
-            %>
-            <script type="text/javascript"> alert("Your message has been send");</script>
-            <%
-            response.sendRedirect("send_msg.jsp?msg_to='"+user_msg_to+"'");
-        }
-    }
-    catch(Exception e){
-        e.printStackTrace();
-    }
-    }
-}
- %>
  <h2>Message to <%=user_msg_to%></h2>
- <form action="send_message.jsp" method="GET">
-   
-     <textarea cols="50" rows="12" placeholder="Enter Your message" name="msg_body"></textarea> 
-     <input type="submit" name="send_message" value="Send Message"/>
- </form>
+ <table height='125' width='75'>
+    <form action="send_message.jsp?user_to=<%=user_msg_to%>" method="POST">
+        <div>
+        <textarea name="msg_body1" id="msg_body1" cols="45" rows="15" ng-value="msg_body1"></textarea> 
+        <a href="send_message.jsp" msg_body="%msg_body%">Send Message</a>
+        </div>
+    </form>
+ </table>
+</body> 
+</html> 
 
- 
     <%@include file="includes/footer.jsp" %>

@@ -31,6 +31,7 @@
  String user_logged=(String) pageContext.getAttribute("username", PageContext.SESSION_SCOPE);
  String user_view= (String) pageContext.getAttribute("username_other_user", PageContext.SESSION_SCOPE);
  pageContext.setAttribute("user_view",user_view,pageContext.SESSION_SCOPE);
+ pageContext.setAttribute("user_login",user_logged,pageContext.SESSION_SCOPE);
  String sql_post="select * from posts where user_posted_to='"+user_view+"'order by date_added desc limit 10";
  ResultSet rs_view_posts_other_user=conn.createStatement().executeQuery(sql_post);
  %>
@@ -49,7 +50,6 @@
   <%  
     
     while(rs_view_posts_other_user.next()){
-    
     String body=rs_view_posts_other_user.getString(2);
     java.sql.Date date_added=rs_view_posts_other_user.getDate(3);
     String added_by=rs_view_posts_other_user.getString(4);
